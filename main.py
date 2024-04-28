@@ -1,3 +1,5 @@
+from fpdf import FPDF
+
 class Bill:
     """
     Contains data about a bill such as the total amount and the period of the bill.
@@ -14,14 +16,16 @@ class Flatmate:
         self.name = name
         self.days_in_house = days_in_house
 
-    def pays(self, bill):
-        pass
-
+    def pays(self, bill, other_flatmate):
+        weighting = self.days_in_house / (self.days_in_house + other_flatmate.days_in_house)
+        amount_to_pay = bill.amount * weighting
+        return amount_to_pay
 
 class PDFReport:
     """
     Creates a PDF file to summarise data about the flatmates,
     including their names and how much they owe, and the period of their bill.
+    Using the fpdf package.
     """
     def __init__(self, filename):
         self.filename = filename
@@ -29,9 +33,9 @@ class PDFReport:
     def generate(self, flatmate_1, flatmate_2):
         pass
 
-# I want to write code like this:
+# Testing
 my_bill = Bill(amount=120, period="March 2024")
 Euan = Flatmate(name="Euan", days_in_house=20)
 Sol = Flatmate(name="Sol", days_in_house=30)
 
-print(Euan.pays(bill=my_bill))
+print(Euan.pays(bill=my_bill, other_flatmate=Sol))
