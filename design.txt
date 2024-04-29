@@ -1,4 +1,4 @@
-Title: Flatmates Billing App
+Title: Flatmates Bill Splitting App
 
 Description: An app that gets as input the amount of a bill for a particular period and
 the days that each of the flatmates stayed in the house for that period and returns
